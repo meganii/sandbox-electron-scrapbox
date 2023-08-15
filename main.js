@@ -13,7 +13,7 @@ function createWindow () {
   })
 
   // win.loadFile('index.html')
-  win.loadURL('https://scrapbox.io/meganii')
+  win.loadURL('https://scrapbox.io/')
 }
 
 app.whenReady().then(() => {
