@@ -9,6 +9,7 @@
   "author": "meganii",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^25.3.0"
+    "electron": "^25.3.0",
+    "esbuild": "^0.19.2"
   }
 }

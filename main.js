@@ -6,11 +6,14 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
-  win.loadFile('index.html')
+  // win.loadFile('index.html')
+  win.loadURL('https://scrapbox.io/meganii')
 }
 
 app.whenReady().then(() => {
