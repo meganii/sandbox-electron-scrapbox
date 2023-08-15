@@ -1,0 +1,3 @@
+[submodule "src/ScrapBubble"]
+	path = src/ScrapBubble
+	url = git@github.com:meganii/ScrapBubble.git
