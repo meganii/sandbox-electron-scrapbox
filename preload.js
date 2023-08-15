@@ -1,21 +1,17 @@
-window.addEventListener('load', (event) => {
+globalThis.window.addEventListener('load', (_event) => {
   console.log('Done load');
   waitForScrapboxObject();
 })
 
 function waitForScrapboxObject() {
   if (window.scrapbox === undefined) {
-    console.log("まだ有効ではない");
-    console.log(window.scrapbox);
+    console.log("Scrapbox object is not enabled");
     setTimeout(waitForScrapboxObject, 1000);
   } else {
-    console.log("scrapbox オブジェクトが有効になったことを確認");
+    console.log("Scrapbox object is enabled");
     
     setTimeout(()=>{
-      scrapbox.TimeStamp.removeAllFormats();
-      scrapbox.TimeStamp.addFormat('YYYY/MM/DD');
-      scrapbox.TimeStamp.addFormat('YYYY/MM/DD HH:mm:ss');
-      const sb = require('./dist/index');
+      require('./dist/index');
     },1000)
   }
 }
