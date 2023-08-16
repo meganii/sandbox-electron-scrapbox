@@ -12,8 +12,18 @@ function createWindow () {
     }
   })
 
-  // win.loadFile('index.html')
   win.loadURL('https://scrapbox.io/')
+  const { session } = require('electron')
+  session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+    callback({
+      responseHeaders: {
+        ...details.responseHeaders,
+        'Content-Security-Policy': [
+          "script-src 'self' cdnjs.cloudflare.com maps.googleapis.com 'unsafe-eval' helpfeel-tweaks.helpfeel.com js.stripe.com www.google.com www.gstatic.com 'nonce-hogehogenonce'"
+        ]
+      }
+    })
+  })
 }
 
 app.whenReady().then(() => {
