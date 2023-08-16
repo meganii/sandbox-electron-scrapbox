@@ -7,7 +7,8 @@ import { denoPlugins } from "https://deno.land/x/esbuild_deno_loader@0.8.1/mod.t
 
 const result = await esbuild.build({
   plugins: [...denoPlugins()],
-  entryPoints: ["src/index.ts"],
+  minify: false,
+  entryPoints: ["./src/index.ts"],
   outfile: "./dist/index.js",
   bundle: true,
   format: "esm"
