@@ -1,4 +1,4 @@
-const { mount } = await import("./ScrapBubble/mod.tsx")
+const { mount } = await import("https://raw.githubusercontent.com/meganii/ScrapBubble/main/mod.tsx")
 await mount({
     whiteList: [
         "villagepump",
