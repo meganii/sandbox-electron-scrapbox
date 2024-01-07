@@ -1,5 +1,9 @@
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
+import { app, BrowserWindow } from 'electron'
+import path from "node:path"
+import url from "node:url"
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -8,22 +12,12 @@ function createWindow () {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      preload: path.join(__dirname, 'preload.js')
+      sandbox: false,
+      preload: path.join(__dirname, './dist/preload.mjs')
     }
   })
 
   win.loadURL('https://scrapbox.io/')
-  const { session } = require('electron')
-  session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
-    callback({
-      responseHeaders: {
-        ...details.responseHeaders,
-        'Content-Security-Policy': [
-          "script-src 'self' cdnjs.cloudflare.com maps.googleapis.com 'unsafe-eval' helpfeel-tweaks.helpfeel.com js.stripe.com www.google.com www.gstatic.com 'nonce-hogehogenonce'"
-        ]
-      }
-    })
-  })
 }
 
 app.whenReady().then(() => {

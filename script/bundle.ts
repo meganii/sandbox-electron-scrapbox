@@ -1,19 +1,15 @@
-import * as esbuild from "https://deno.land/x/esbuild@v0.17.19/mod.js";
-// Import the WASM build on platforms where running subprocesses is not
-// permitted, such as Deno Deploy, or when running without `--allow-run`.
-// import * as esbuild from "https://deno.land/x/esbuild@v0.17.19/wasm.js";
-
-import { denoPlugins } from "https://deno.land/x/esbuild_deno_loader@0.8.1/mod.ts";
+import * as esbuild from "https://deno.land/x/esbuild@v0.19.2/mod.js";
+import { denoPlugins } from "https://deno.land/x/esbuild_deno_loader@0.8.2/mod.ts";
 
 const result = await esbuild.build({
   plugins: [...denoPlugins()],
   minify: false,
-  entryPoints: ["./src/index.ts"],
-  outfile: "./dist/index.js",
+  entryPoints: ["./src/preload.ts"],
+  outfile: "./dist/preload.mjs",
   bundle: true,
   format: "esm"
 });
 
-console.log(result.outputFiles);
+console.log(result);
 
 esbuild.stop();

@@ -2,14 +2,15 @@
   "name": "sandbox-electron-scrapbox",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "type": "module",
+  "main": "main.mjs",
   "scripts": {
     "start": "electron ."
   },
   "author": "meganii",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^25.3.0",
-    "esbuild": "^0.19.2"
+    "electron": "^28.1.1",
+    "esbuild": "^0.19.11"
   }
 }
